@@ -1,0 +1,105 @@
+\section{Lecture 5: 02/08/2021}
+
+Today we will be talking about functions: injectivity, surjectivity, bijections, the identity function, and inverse functions.
+
+\subsection{Preparatory Problem}
+
+\begin{example}
+Why isn't $f$ a function: $f : \Q \to \Z$ such that
+\[
+f\left(\frac p q \right) = p.
+\]
+\end{example}
+
+\begin{proof}
+We see that $f$ maps one input to several outputs, which means $f$ cannot be a function! For example:
+\begin{align*}
+    f\left(\frac 3 6 \right) &= 3
+    f\left(\frac 1 2 \right) &= 1
+\end{align*}
+However, we know that $f(3/6) = f(1/2)$, which means $f$ is not \textit{well-defined} (i.e. different ways of writing the same input give different results).
+\end{proof}
+
+\subsection{Functions: Surjectivity, Injectivity, Bijectivity, Inverses}
+
+\begin{definition}[Surjectivity]
+A function $f : S \to T$ is \textit{surjective} iff $\forall y \in T$, $\exists x \in S$ such that $f(x) = y$.
+\end{definition}
+
+\begin{example}
+Using appropriate quantifiers, write what it means for $f$ to \textit{not} be surjective.
+\end{example}
+
+\begin{proof}
+A function $f : S \to T$ is not surjective if $\exists y \in T$ such that $\forall x \in S$, we have $f(x) \neq y$.
+\end{proof}
+
+\begin{definition}[Injectivity]
+A function $f : S \to T$ is \textit{injective} iff $\forall x_1, x_2 \in S$, $x_1 \neq x_2 \implies f(x_1) \neq f(x_2)$.
+\end{definition}
+
+In proofs, we more often use the contrapositive of the definition of injective; that is, $f: S \to T$ is injective if, for all $x_1, x_2 \in S$, $f(x_1) = f(x_2) \implies x_1 = x_2$. Intuitively, every element of the codomain is hit at most once.
+
+If you want to prove that a function $f: A \to B$ is injective, the general structure should be of the following:
+\begin{proof}
+Let $a_1, a_2 \in A$ such that $f(a_1) = f(a_2)$.
+\[
+\vdots
+\]
+Therefore $a_1 = a_2$.
+\end{proof}
+
+If you want to prove that a function $f: A \to B$ is surjective, the general structure should be the following:
+\begin{proof}
+Let $b \in B$. 
+\[
+\vdots
+\]
+\[
+\text{Come up with $a \in A$}.
+\]
+\[
+\vdots
+\]
+Therefore $\exists a \in A$ such that $f(a) = b$.
+\end{proof}
+
+\begin{example}
+Prove that $f : \Z \times \Z \to \Z$ given by $f(m,n) = mn$ is surjective.
+\end{example}
+
+\begin{proof}
+Let $x \in \Z$. Let $m = 1$ and $n = x$. We then have $f(1, x) = x$, which shows that $f$ is surjective.
+\end{proof}
+
+\begin{example}
+If $f : \R \to \R$ is an injective function, prove that $g : \R \to \R$ defined by $g(x)= f(2x+3)$ is also injective.
+\end{example}
+
+\begin{proof}
+Let $a_1, a_2 \in \R$ such that $g(a_1) = g(a_2)$. By definition of $g$, we have:
+\begin{align*}
+    f(2a_1 + 3) &= f(2a_2 + 3) \\
+    \implies 2a_1 + 3 &= 2a_2 + 3\\
+    \implies a_1 &= a_2
+\end{align*}
+since $f$ is injective.
+\end{proof}
+
+\begin{definition}[Bijectivity]
+A function f is \textit{bijective} (an adjective) or a \textit{bijection} (noun) if it is both injective and surjective.
+\end{definition}
+
+\begin{definition}[Composition]
+If $h_1 : S \to T$ and $h_2 : T \to U$ are functions, the \textit{composition} $h_2 \circ h_1$ is the function $S \to U$ defined by $(h_2 \circ h_1)(s) = h_2(h_1(s))$.
+\end{definition}
+
+\begin{definition}[Identity]
+Let $S$ be a set. The \textit{identity function} on $S$ is the function $\mbox{Id}_S: S \longrightarrow S$ defined by $\mbox{Id}_S(x)=x$.
+\end{definition}
+
+\begin{definition}[Inverse]
+Let $f: A \to B$ be a function. A function $g: B \to A$ is an \textit{inverse function} of $f$ if $f \circ g = \mbox{Id}_B$ and $g \circ f = \mbox{Id}_A$.
+\end{definition}
+
+It is a fact that if $f: A \to B$ is a bijection, then $f$ has an inverse function.

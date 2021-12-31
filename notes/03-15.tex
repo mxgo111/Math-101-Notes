@@ -1,0 +1,94 @@
+\section{Lecture 12: 03/15/21}
+
+\subsection{Operation on Cosets, Normal Subgroups}
+
+Let $H$ be a subgroup of $G$.
+
+\begin{lemma}
+Let $g_1, g_2 \in G$. Then $g_1H = g_2H$ iff $g_1 \in g_2H$. This means that $g_1 = g_2 h$ for some $h \in H$.
+\end{lemma}
+
+\begin{definition}
+We defined $*_l$ on $\{\text{left cosets of $H$ in $G$}\}$ by:
+\begin{align*}
+    (aH) *_l (bH) := abH.
+\end{align*}
+\end{definition}
+
+When is $*_l$ well-defined?\\
+
+We want it to be the case that if $a_1H = a_2H$ an $b_1H = b_2H$, then $a_1b_1H = a_2b_2H$.
+
+We know that $a_1 = a_2h_1$ and $b_1 = b_2h_2$ for some $h_1, h_2 \in H$. We want to show that $a_1b_1 = a_2b_2h_3$ for some $h_3 \in H$.
+
+Thus, our expression that we want to show is equivalent to:
+\begin{align*}
+    a_1b_1 &= a_2b_2h_3 \\
+    \iff (a_2h_1)(b_2h_2) &= a_2b_2h_3 \\
+    \iff b_2^{-1}h_1b_2h_2 &= h_3
+\end{align*}
+
+Thus, we need $b_2^{-1}h_1b_2$ to be in $H$. We write $g = b_2^{-1}$ and $h = h_1$, so that we now need $ghg^{-1} \in H$ for all $g \in G$ and $h \in H$, which is equivalent to $H$ being a normal subgroup of $G$ (denoted $H \triangleleft G$).
+
+\subsection{Quotient Groups}
+
+\begin{proposition}
+Suppose that $H \triangleleft G$. We write $G/H$ for the set of left cosets of $H$ in $G$. We've defined an operation on $G/H$ by $(aH)(bH) := abH$, and we've seen that this operation is well-defined. Prove that $G/H$ is a group under this operation.\\
+
+We read $G/H$ as ``$G$ mod $H$" and call it a \textbf{quotient group} or \textit{factor group}.
+\end{proposition}
+
+We can check the axioms as follows:
+\begin{itemize}
+    \item Closure: If $aH, bH \in G/H$, then $(aH)(bH) = abH$ is a left coset, so $abH \in G/H$.
+    \item Associativity: Let $aH$, $bH$, $cH$ be in $G/H$. Then $((aH)(bH)(cH) = ((ab)cH) = (a(bc)H) = (aH)((bH)(cH))$ (by associativity in $G$).
+    \item Identity: Let $e$ be the identity of $G$. Then $(aH)(eH) = (eH)(aH) = aH$.
+    \item Inverses: Let $g \in G$. Then $g^{-1}H$ is the inverse of $gH$ since $(g^{-1}H)(gH) = (gH)(g^{-1}H) = eH$.
+\end{itemize}
+
+\begin{example}
+Let $G$ be any group. We examine edge cases. We can show that $G$ and $\{e\}$ are normal subgroups of $G$.
+
+\begin{itemize}
+    \item Describe the quotient group $G/G$.
+    \begin{align*}
+        G/G &= \{\text{left cosets of $G$ in $G$}\} \\
+        &= \{eG\}.
+    \end{align*}
+    so this quotient group has just one element!
+    \item Describe the quotient group $G/\{e\}$.
+    \begin{align*}
+        G/\{e\} &= \{\text{left cosets of $\{e\}$ in $G$}\} \\
+        &= \{\{g\} \ \forall g \in G\}
+    \end{align*}
+    so $|G/\{e\}| = |G|$.
+\end{itemize}
+\end{example}
+
+\begin{example}
+Explain why $\Z \triangleleft \R$, and describe the quotient group $\R / \Z$.
+\end{example}
+
+\begin{proof}
+Two different ways to show that $\Z$ is a normal subgroup of $\R$:
+\begin{itemize}
+    \item $\R$ is abelian
+    \item If $g \in \R$ and $h \in \Z$, then $g + h + (-g) = h \in \Z$.
+\end{itemize}
+The left cosets are $a + \Z$, so we have:
+\[
+\R/\Z = \{a + \Z | 0 \le a < 1\}
+\]
+\end{proof}
+
+\begin{example}
+Prove that, if $H \triangleleft G$ and $a \in G$, then $aH = Ha$.
+\end{example}
+
+\begin{proof}
+Suppose $H \triangleleft G$ and $a \in G$. Then we show both sides:
+\begin{itemize}
+    \item $\subseteq$. Let $x \in aH$. Then $x = ah$ for some $h \in H$. We can rewrite $x = aha^{-1}a$. Since $H$ is a normal subgroup of $G$, $aha^{-1} \in H$, so $x \in Ha$.
+    \item $\supseteq$. Let $x \in Ha$. Then $x = ha$ for some $h \in H$. We can rewrite $x = aa^{-1}ha$, and $a^{-1}ha \in H$, so $x \in aH$.
+\end{itemize}
+\end{proof}

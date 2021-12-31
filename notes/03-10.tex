@@ -1,0 +1,78 @@
+\section{Lecture 11: 03/10/21}
+
+\begin{theorem}[Lagrange]
+Let $G$ be a finite group. If $H$ is a subgroup of $G$, then $|H| \big| |G|$.
+\end{theorem}
+
+\subsection{Cosets!}
+
+We will be using the tool of \textit{cosets}. If $G$ is a group (finite or infinite) and $H$ is a subgroup of $G$, and $g \in G$, then we define:
+
+\begin{itemize}
+    \item The \textit{left coset} is $gH = \{gh | h \in H\}$.
+    \item The \textit{right coset} is $Hg = \{hg | h \in H\}$.
+\end{itemize}
+
+\begin{example}[$\Z_{12}$]
+Consider the group $\Z_{12}$ and the subgroup $H = {0, 3, 6, 9}$. Then a non-repeating list of left cosets of $H$ in $\Z_{12}$ is:
+\begin{itemize}
+    \item $[0]_{12} + H = \{0, 3, 6, 9\}$
+    \item $[1]_{12} + H = \{1, 4, 7, 10\}$
+    \item $[2]_{12} + H = \{2, 5, 8, 11\}$
+\end{itemize}
+
+It turns out that the right cosets are exactly the same as these!
+\end{example}
+
+\begin{example}
+Look back at the examples of cosets we have seen so far. What properties do you notice?
+\begin{itemize}
+    \item All cosets have the same number of elements, which is $|H|$.
+    \item The sum of the number of elements in each distinct coset is $|G|$ because every element of $|G|$ is in exactly one coset.
+\end{itemize}
+Based on these properties, $|G|=(\mbox{\# of cosets})(\mbox{size of each coset})$
+\end{example}
+
+\begin{lemma}
+Let $G$ be a finite group and $H$ be a subgroup of $G$. If $g\in G$, then $|gH|=|H|$.
+\end{lemma}
+
+\begin{proof}
+(Strategy: find a bijection between $gH$ and $H$)\\
+Let $f:H\rightarrow gH$ be defined by $f(h)=gh$. 
+\begin{itemize}
+    \item (injective) Suppose $f(h_1)=f(h_2)$ for some $h_1,h_2\in H$. By definition of $f$, 
+    \[gh_1=gh_2\]
+    By the left-cancellative property, $h_1=h_2$.
+    \item (surjective) Let $b\in gH$. Then $b=gh$ for some $h\in H$. So $f(h)=gh=b$.
+\end{itemize}
+So $f$ is bijective, so $|H|=|gH|$.
+\end{proof}
+
+\subsection{Lagrange's Theorem!}
+
+\begin{theorem}[Lagrange]
+Let $G$ be a finite group. If $H$ is a subgroup of $G$, then $|H| \big| |G|$.
+\end{theorem}
+
+\begin{proof}[Proof of Lagrange's Theorem]
+Let $G$ be a finite group and $H$ be a subgroup of $G$. Since every element of $G$ is in exactly one left coset, 
+\[|G| = (\mbox{\# of left cosets})(\mbox{size of each left coset})\]
+\[|G| = (\mbox{\# of left cosets})|H|\]
+by our lemma. So $|H|\big| |G|$ (and the number of left cosets is $\frac{|G|}{|H|}$.
+\end{proof}
+
+\begin{corollary}
+Let $|G|$ be a finite group and $g\in G$. Then $|g|\,\big|\,|G|$.
+\end{corollary}
+\begin{proof}
+By Lagrange's Theorem, $|\langle g \rangle\| \,\big| \,|G|$. Last time we showed that $|g| = |\langle g\rangle|$. So $|g| \,\big| \,|G|$.
+\end{proof}
+
+\begin{corollary}
+Let $G$ be a finite group with prime order. Then $G$ is cyclic, and any non-identity element is a generator for $G$.
+\end{corollary}
+
+\begin{proof}
+Let $|G|$ be a finite group with prime order. Let $g$ be any non-identity element of $G$. (WTS: $\langle g \rangle =G $). Since $|g| \,\big| \,|G|$ and $|G|$ is prime, either $|g|=1$ or $|g|=|G|$. Since $g\neq e$, $|g|\neq 1$ so $|g|=|G|$. So, $\langle g \rangle$ has $|G|$ elements, so $\langle g \rangle $=G .
+\end{proof}

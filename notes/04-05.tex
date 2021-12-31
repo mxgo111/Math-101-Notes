@@ -1,0 +1,57 @@
+\section{Lecture 17: 04/05/21}
+
+Recall:
+\begin{itemize}
+    \item A sequence $(a_n)$ in $\R$ converges to a limit $L$ if, for every $\varepsilon > 0$, there exists $N$ such that, for all $n > N$, $|a_n - L| < \epsilon$.
+\end{itemize}
+
+\subsection{Monotonic Sequence Property}
+
+\begin{theorem}[Monotonic Sequence Property]
+If $(a_n)$ is an increasing sequence which is bounded above, then $(a_n)$ converges (to a limit in $\R$).
+\end{theorem}
+
+We have an immediate corollary of this property:
+\begin{corollary}
+If $(a_n)$ is a decreasing sequence which is bounded below, then $(a_n)$ converges.
+\end{corollary}
+
+\begin{proof}
+Let $(a_n)$ be a decreasing sequence bounded below by $M$. Then $(-a_n)$ is an increasing sequence bounded above by $-M$, so $(-a_n)$ converges by the Monotonic Sequence Property. Then $(a_n)$ converges by the Algebraic Limit Theorem.
+\end{proof}
+
+\subsection{Boundedness}
+
+\begin{definition}[Boundedness]
+A set or sequence in $\R$ is \textit{bounded} if there exists $M$ such that $|x| \le M$ for all $x$ in the set or sequence. (This is equivalent to being both bounded above and bounded below).
+\end{definition}
+
+\begin{example}
+Prove every convergent sequence is bounded.
+\end{example}
+\begin{proof}
+Let $(a_n)_{n=1}^\infty$ be a convergent sequence and $L = \lim_{n=1}^\infty a_n$. Since $1>0$, there exists $N\in \N$ such that, for all $n>N$, $|a_n-L|<1$. Let $M=max(|a_1|,|a_2|,\dots,|a_N|, 1+|L|)$. Let $n\in N$. 
+\begin{itemize}
+    \item If $n\leq N$, then $|a_n| \leq M$ by definition of $M$.
+    \item If $n>M$, then $|a_n-L|<1$, so
+    \begin{align*}
+        |a_n| &= |a_n-L+L|\\
+        &\leq |a_n-L|+|L| \quad\quad \text{by the triangle inequality}\\
+        &< 1+|L|\\
+        &\leq M
+    \end{align*}
+\end{itemize}
+So, $|a_n| \leq M$.
+\end{proof}
+
+\begin{definition}[Subsequence]
+Let $(a_n)$ be a sequence. If $n_1 < n_2 < n_3 < \dots$, then $(a_{n_1}, a_{n_2}, a_{n_3}, \dots)$ is a \textit{subsequence} of $(a_n)$.
+\end{definition}
+
+\begin{proposition}
+If a sequence $(a_n)$ converges to some limit $L$, then every subsequence also converges to $L$.
+\end{proposition}
+
+\begin{theorem}[Bolzano-Weierstrass]
+Every bounded sequence has a convergent subsequence.
+\end{theorem}

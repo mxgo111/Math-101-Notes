@@ -1,0 +1,50 @@
+\section{Lecture 18: 04/07/21}
+
+Today we will be looking at the Bolzano-Weierstrass Theorem. We will also cover sequences in $\R^m$. This theorem is the longest, most involved theorem we will prove in Math 101, so don't be worried if it takes a couple of going's over for it to click!.
+
+\subsection{Bolzano-Weierstrass}
+
+\begin{theorem}[Bolzano-Weierstrass Theorem]
+Every bounded sequence has a convergent subsequence.
+\end{theorem}
+
+\begin{proof}
+Let $(x_n)^\infty_{n=1}$ be a bounded sequence. Then, there exists $M\in \R$ such that $|x_n| \leq M$ for all $n$. \footnote{Note: for any CS-minded readers, the way that we go about this proof is very similar to a binary search algorithm}\\
+
+\emph{Our overall strategy here is that we want to leverage the squeeze theorem to show that $(a_k)$ and $(b_l)$ converge to same limit, then squeeze theorem says that $x_{n_k}$ converges to that limit too.} \\
+
+Let $a_1 = M$ and $b_1 = M$. Bisect $[a_1, b_1]$ into $2$ closed subintervals. At least one of the subintervals has infinitely many terms of $(x_n)$, so let $[a_2, b_2]$ be such a subinterval. \\
+
+Bisect $[a_2, b_2]$, $[a_3, b_3]$ and continue this process. Since $[a_1, b_1] \supseteq [a_2, b_2] \supseteq [a_3, b_3] \supseteq \dots$, $a_1 \le a_2 \le a_3 \le \dots$. So, $(a_k)$, is increasing. Also, $(a_k)$ is bounded above by $b_1$, so $(a_k)$ must converge by the MSP. Let $L = \lim_{k\to\infty}a_k$. \\
+
+The length of $[a_k, b_k]$ is $b_k - a_k = \frac{4M}{2^k}$ by construction, so $\lim_{k\to\infty}(b_k-a_k) = 0$.  Since $b_k = (b_k -a_k) + a_k$, $\lim_{k\to\infty}b_k = 0 + L = L$ by the Algebraic Limit Theorem.\\
+
+Now, we'll construct a convergent subsequence $(x_{n_k})$ of $(x_n)$ as follows:
+\begin{enumerate}
+    \item The first term we said doesn't really matter, so we simply say: Let $n_1 \in \N$.
+    \item Since $[a_2, b_2]$ has infinitely many terms of $(x_n)$, there exists $n_2 > n_1$, such that $x_{n_2} \in [a_2, b_2]$.
+    \item  Since $[a_3, b_3]$ has infinitely many terms of $(x_n)$, there exists $n_3 > n_2$, such that $x_{n_3} \in [a_3, b_3]$.
+    \item $\dots$
+\end{enumerate}
+Since $x_{n_k} \in [a_k, b_k]$, we have $a_k \leq x_{n_k} \leq b_k$. Since $\lim_{k\to\infty} a_k = \lim_{k\to\infty}b_k = L$, $\lim_{k\to\infty}x_{n_k} = L$ by the Squeeze Theorem.
+\end{proof}
+
+Now let's move to considering sequences in $\R^m$. A small notational note is that when we want to talk about a point we denote this with an arrow i.e. $\vec{x}$. \\
+
+Let's start with a familiar definition in $\R$. \begin{definition}
+A sequence $(x_n)$ in $\R$ converges to a limit $L$ if, for every $\varepsilon > 0$, there exists $N$ such that, for all $n > N$, $|x_n - L| < \varepsilon$. 
+\end{definition}
+To generalize this to $\R^m$, consider
+\begin{definition}
+A sequence $(\vec{x}_n)$ in $\R^m$ converges to a limit $\vec{L}$ if, for every $\varepsilon > 0$, there exists $N$ such that, for all $n > N$, $||\vec{x_n} - \vec{L}|| < \varepsilon$.
+\end{definition}
+Some notes on notation:
+\begin{itemize}
+    \item In $\R$, $|a|$ is the distance between $a$ and $0$.
+    \item in $\R^m$, distance between $\vec{a} = (a_1, \dots, a_m)$ and $\vec{0} = (0, \dots, 0)$ is $||\vec{a}|| = \sqrt{a_1^2 + \dots + a_m^2}$. This is referred to as the norm of a. 
+\end{itemize}
+Some facts about $\R^m$:
+\begin{itemize}
+    \item The triangle inequality still holds, namely that $||\vec{x} + \vec{y}|| \le ||\vec{x}|| + ||\vec{y}||$.
+    \item A set/sequence in $\R^m$ is bounded if there exists $M \in \R$ such that $||\vec{x}|| \leq M$ for all $\vec{x}$ in the set/sequence.
+\end{itemize}

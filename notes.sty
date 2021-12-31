@@ -1,0 +1,110 @@
+\setlength{\parindent}{0pt}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{minted}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+ 
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+ 
+\lstset{style=mystyle}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+\urlstyle{same}
+
+% theorem definitions
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{question}{Question}[section]
+\newtheorem{exercise}{Exercise}[section]
+\newtheorem*{note}{Note}
+\newtheorem*{claim}{Claim}
+
+\newcommand{\BR}{\mathbb R}
+\newcommand{\BC}{\mathbb C}
+\newcommand{\BF}{\mathbb F}
+\newcommand{\BQ}{\mathbb Q}
+\newcommand{\BZ}{\mathbb Z}
+\newcommand{\BN}{\mathbb N}
+\newcommand{\bX}{\mathbf X}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\bP}{\mathbb{P}}
+\newcommand{\p}{\partial}
+\newcommand{\la}{\lambda}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\CO}{\mathcal{O}}
+\newcommand{\CC}{\mathcal{C}}
+\newcommand{\CU}{\mathcal{U}}
+\newcommand{\Ob}{\rm Ob}
+\newcommand{\Mor}{\rm Mor}
+\newcommand{\ol}{\overline}
+\newcommand{\stwo}[2]{\genfrac{\{}{\}}{0pt}{}{#1}{#2}}
+\newcommand{\im}{\operatorname{im}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\Int}{\operatorname{Int}}
+\newcommand{\tn}{\textnormal}
+\newcommand{\nc}{\newcommand}
+\newcommand{\st}{\textnormal{ such that }}
+\newcommand{\vol}{\mathrm{Vol}}
+\newcommand{\Var}{\textnormal{Var}}
+\newcommand{\Cov}{\textnormal{Cov}}
+\newcommand{\E}{\mathbb E}
+\newcommand{\indep}{\perp \!\!\! \perp}
+\newcommand{\argmin}{\textnormal{argmin}}
+\newcommand{\argmax}{\textnormal{argmax}}
+\newcommand{\code}[1]{\lstinline{#1}}
+\newcommand{\eps}{\varepsilon}
+
+\makeatletter
+\newcommand*\bigcdot{\mathpalette\bigcdot@{.5}}
+\newcommand*\bigcdot@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
+\makeatother
+
+\nc{\on}{\operatorname}
+\nc{\ord}{\on{ord}}
+\nc{\sgn}{\on{sgn}}
+\nc{\Sym}{\on{Sym}}
+\makeatletter

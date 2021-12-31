@@ -1,0 +1,57 @@
+\section{Lecture 7: 02/17/21}
+Announcements and reminders:
+\begin{itemize}
+    \item Semi Midterm on Monday
+    \item You may use :
+    \subitem - Notes you've written yourself
+    \subitem - Notes we've shared with you
+    \subitem - worksheets and homework (and solutions)
+    \subitem - Hammack
+    \item Focus on \textbf{correct proof structure} and \textbf{applying definitions}
+    \item Don't forget proof etiquette.
+\end{itemize}
+Today we will talk about group theory. Group theory is a part of what mathematicians call algebra or sometimes abstract algebra. This is to distinguish it from the algebra you might have learned in junior high school. We will discuss what a \textbf{group} is today. Drawing motivation from problem 8 on problem set 4, we have that the equivalence classes of a set and $\Z_4$ are the same. 
+
+\subsection{Groups! Axioms}
+
+\begin{definition}[Group]
+A \emph{group} $(G, \star)$ is a set $G$ along with an operation $\star$ satisfying 4 axioms:
+\begin{enumerate}
+    \item \emph{Closure :} For all $a,b \in G$, $a\star b \in G$. (``G is closed under $\star$").
+    \item \emph{Associativity :} For all $a, b, c \in G$, $(a\star b) \star c = a \star (b \star c)$. (``$\star$ is associative").
+    \item \emph{Identity :} There exists $e \in G$ such that $e \star g = g \star e = g$ for all $g\in G$. We call $e$ an \emph{identity element}. 
+    \item \emph{Inverses :} For every $g \in G$, there exists $h \in G$ such that $g \star h = h \star g = e$. (We call $h$ an \emph{inverse} of $g$).
+\end{enumerate}
+\end{definition}
+\begin{example}
+Let's look at how we can show that $(\Z_4, +_4)$ is a group. We need to verify the four axioms: (the below doesn't justify a formal proof, for this we would want to be a little more formal with our examples)
+\begin{enumerate}
+    \item From the table we made on the pset, we have closure. 
+    \item For the identity, we see that $0$ composed with an element gives us that element back. 
+    \item For associativity, $([a]_4 +_4 [b]_4) +_4 [c]_4 = [a]_4 +_4 ([b]_4 +_4 [c]_4)$. If we calculate both sides we see that they are both equal. 
+    \item For inverses, we see that $0$'s inverse is $0$, $1$'s is $3$, $2$'s is $2$, and $3$'s is $1$. 
+\end{enumerate}
+We have shown that $(\Z_4, +_4)$ is a group. More generally, we have that $(\Z_n, +_n)$ is a group for every $n\in \N$.
+\end{example}
+\begin{example}
+Which of the following are groups:
+\begin{enumerate}
+    \item $(\Z, +)$ : This is a group! We have associativity, identity is $0$, you can achieve inverses by negating the element, and closure is given by any integer plus an integer being an integer. 
+    \item $(\Z, \cdot)$ : This is not a group! We have closure, an identity ($1$), and associativity). We don't have inverses because we are in the integers and thus don't have fractions. We can think about taking $(\Z \cup \{\pm \frac{1}{n} | n \in N, n \ne 0\})$. This however wouldn't be closed (even though we have inverses). We can now think about $(\Q, \cdot)$ which is still not a group because $0$ doesn't have an inverse. To end up with a group, we have to say $(\Q \setminus \{0\}, \cdot)$.
+\end{enumerate}
+\end{example}
+\begin{example}
+If $(G, \star)$ is a group, prove that $G$ has a unique identity element. In each line of your argument, please state explicitly which gropu axiom you're using. To prove ``There's at most one of something." is the same as saying ``If $a_1 \neq a_2$, the $a_1$ and $a_2$ are not both $a$ something. 
+\begin{proof}
+Let $e_1, e_2$ be  identity elements. Since $e_1$ is an identity, we have $e_1 \star e_2 = e_2$. Since $e_2$ is an identity, $e_1 \star e_2 = e_1$. Therefore, we have that $e_1 = e_2$.
+\end{proof}
+\end{example}
+\begin{example}
+For a set $S$, let $A(S)$ be the set of bijections $S\to S$. (A bijection $S\to S$ is also called a \underline{permutation of S}.) As usual, we'll use the symbol $\circ$ to denote function composition. Is $(A(S), \circ)$ a group? Prove it. To sketch out the reasoning, we can do the following:
+\begin{itemize}
+    \item Closure : If $f, g \in A(S)$, is $f \circ g \in A(S)$. We can rewrite this as, If $f, g : S\to S$ are bijective, is $f\circ g : S\to S$ bijective? Yes.
+    \item Associativity : If $f, g, h \in A(s)$ i.e. are bijective and $S\to S$, is $(f\circ g) \circ h = f\circ (g\circ h)$? To show this, we can test function equality i.e. $[(f\circ g) \circ h](x) = [f \circ (g\circ h)](x)$? (It does hold!)
+    \item Identity : $Id_S(x)=x$? $Id_S$, is a bijection so it is in our group. We also need to check that if we compose it with another function, we get that function back. We do something similar to what we did for associativity which is to show that $(f\circ Id_S)(x) = (Id_S \circ f)(x) = f(x)$.
+    \item Inverses : If $f \in A(S)$, we've shown that every bijection has an inverse and therefore $f$ has an inverse. 
+\end{itemize}
+\end{example}

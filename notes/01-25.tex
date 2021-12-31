@@ -1,0 +1,79 @@
+\section{Lecture 1: 01/25/2021}
+
+\subsection{The Raisin Game}
+
+You and your friend start with $n$ raisins, where $n$ is a positive integer (e.g. $1, 2, \dots$). You decide to play a game with your friend where you each take $1, 2, 3,$ or $4$ raisins when it is your turn. The person who takes the last raisin wins. \\
+
+How do we come up with a strategy for this game? After playing a few games, you might realize that the number $5$ is quite special. If your friend reaches the number $5$ (and then it's your turn), then unfortunately, no matter how many raisins you take, your friend can take the last raisin by taking the remaining raisins.\\
+
+After playing some more, we realize that for the numbers $6, 7, 8,$ and $9$, whoever goes first wins! The first player can force the next player to start with $5$ raisins, which results in a win for the first player.\\
+
+At this point, we might form the following conjecture:
+
+\begin{conjecture}
+The second player has a winning strategy iff (if and only if, or ``exactly when") at the start the number of raisins is a multiple of $5$.
+\end{conjecture}
+
+\begin{proof}
+First we do the ``if" direction. Suppose the number of raisins is a multiple of $5$. Then the first player takes some number of raisins $x$, where $x$ is $1, 2, 3,$ or $4$. Then the second player can take $5-x$ raisins, and the remaining number of raisins is another multiple of $5$. Thus, the second player can continue to force the first player to start at smaller and smaller multiples of $5$ until they reach the number $5$. The first player then takes some number of raisins, and as discussed above the second player wins no matter how many the first player takes.\\
+
+Next we do the ``only if" direction. Suppose the number of raisins is not a multiple of $5$. Then the first player can win by taking a number of raisins that leaves a multiple of $5$, so the argument above shows you have a winning strategy.
+\end{proof}
+
+Here is an example of some conjectures that are not always true. The mathematician Leonhard Euler stated that:
+\begin{conjecture}
+$n^2 + n + 41$ is prime for $n = 0, \dots, 39$.
+\end{conjecture}
+This might lead one to think that the above is true for all $n\geq0$, but we can provide a counterexamples for things outside this range such as $40^2 + 40 + 41$. (You will learn about techniques to prove that for $n>39$ Euler's polynomial is not prime later in the course).
+Here is another from Fermat
+\begin{conjecture}
+$2^{2^n} + 1$ is prime for $n = 0, 1, 2,3,4$ and composite for $n=5$.
+\end{conjecture}
+
+
+\subsection{Fundamentals}
+
+Some important definitions!
+
+\begin{definition}[Evenness]
+An integer $n$ is \textit{even} if $n = 2k$ for some integer $k$.
+\end{definition}
+
+These ``if"'s should actually be ``iff"'s (if and only if). However, in definitions, we usually assume that if means iff.
+
+\begin{definition}[Oddness]
+Correspondingly, an integer $n$ is \textit{odd} if $n = 2k+1$ for some integer $k$. 
+\end{definition}
+
+\begin{definition}[Divisibility]
+An integer $m$ \textit{divides} an integer $n$, written $m|n$, if $n = mk$ for some integer $k$.
+\end{definition}
+
+\begin{definition}[Casework]
+Sometimes when we write a proof, we want to split up the possibilities to prove it in ``cases".
+\end{definition}
+
+\begin{example}
+Prove that $n(3n + 1)$ is always even. 
+\end{example}
+
+\begin{proof}
+We begin with a generality statement. This means we pick an arbitrary integer $n$ and then proceed with our proof. Because we just picked an arbitrary number, our proof will still hold. We can split this into two cases: when $n$ is even, when $n$ is odd.\\
+
+\textbf{Case 1}: $n$ is even.\\
+
+If $n$ is even we have that $n = 2k$ for some integer k, so 
+\[
+n(3n +1) = 2k(3n + 1),
+\]
+which is even.\\
+
+\textbf{Case 2}: $n$ is odd.\\
+
+If $n$ is odd, we can write that $n = 2k+1$ for some integer $k$, so 
+\[
+n(3n+1) = n(6k+4) = 2(n(3k+2)),
+\]
+which is even.
+\end{proof}
+

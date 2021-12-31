@@ -1,0 +1,114 @@
+\section{Lecture 19: 04/12/21}
+
+\subsection{Function Continuity}
+
+\begin{definition}[Function Continuity]\
+\quad
+\begin{enumerate}
+    \item Calculus $1$ definition: $f$ is continuous at $c$ if $\lim_{x \to c} f(x) = f(c)$.
+    \item Actual definition: Let $f: \R^m \to \R^n$ and $\vec c \in \R^m$. We say $f$ is \textit{continuous} at $\vec c$ if for every $\varepsilon>0$, there exists a $\delta>0$ such that, for every $\vec{x}\in \R^m$ such that $|\vec{x}-\vec{c}| <\delta$, we have $||f(\vec x) - f(\vec c)|| < \varepsilon$.
+\end{enumerate}
+\end{definition}
+
+\begin{example}
+Suppose you want to prove a function $f: \R^m \to \R^n$ is continuous at $\vec c$. The general structure of the proof should go as follows:
+\begin{enumerate}
+    \item Let $\varepsilon > 0$.
+    \item Let $\delta$ be something you come up with based on $\varepsilon$.
+    \item Let $\vec x \in \R^m$ such that $||\vec x - \vec c|| < \delta$. 
+    \item $\vdots$ (do some things)
+    \item Therefore, $||f(\vec x) - f(\vec c) || < c$.
+\end{enumerate}
+\end{example}
+
+\begin{example}
+Prove that $f : \R \to \R$ given by $f(x) = 2x + 1$ is continuous at $3$.
+\end{example}
+
+\textcolor{blue}{
+Scratchwork: want:
+\begin{align*}
+    |f(x) - f(3)| &< \varepsilon \qquad \text{when } |x - 3| < \delta \\
+    |2x+1 - 7| &< \varepsilon \\
+    |2x - 6| &< \varepsilon \\
+    2|x - 3| &< \varepsilon \\
+    \implies \text{we want}\quad 2\delta &\le \varepsilon.
+\end{align*}
+Let $\delta = \frac \varepsilon 2$.
+}
+
+\begin{proof}
+Let $\delta = \frac \varepsilon 2$. Let $x \in \R$ such that $|x - 3| < \delta$. Then,
+\begin{align*}
+    |f(x) - f(3)| &= |2x + 1 - 7| \\
+    &= |2x - 6| \\
+    &= 2|x-3| \\
+    &< 2\delta \\
+    &= \varepsilon \qquad \text{since }\delta = \frac \varepsilon 2.
+\end{align*}
+\end{proof}
+
+\begin{example}
+Prove that $f: \R \to \R$ given by $f(x) = x^2$ is continuous at $5$.
+\end{example}
+
+\textcolor{blue}{
+Scratchwork: want
+\begin{align*}
+    |f(x) - f(5)| &< \varepsilon \quad \text{when } |x - 5| < \delta . \\
+    |x^2 - 25| &< \varepsilon \\
+    |x-5||x+5| &< \varepsilon \\
+\end{align*}
+Let's decide $\delta \le 1$. Then $|x - 5| < 1$. We have $4 < x < 6$, so by the triangle inequality 
+\[
+|x + 5| \le |x| + 5 < 6 + 5 = 11.
+\]
+Thus, if $|x - 5| < \delta$, then $|x - 5||x+5| < \delta \cdot 11$, so we also want $\delta \le \frac{\varepsilon}{11}$.
+}
+\begin{proof}
+Let $\varepsilon > 0$. Then $\delta = \min\left(1, \frac \varepsilon, 11\right)$. Let $x \in \R$ such that $|x - 5| < \delta$. Then,
+\begin{align*}
+    |f(x) - f(5)| = |x^2 - 25| = |x-5||x+5| \qquad \qquad  (*)
+\end{align*}
+Let's first bound $|x+5|$. Since $|x-5| < \delta \le 1$, $4 < x < 6$, so
+\begin{align*}
+    |x+5| &\le |x| + |5| \qquad \text{by triangle inequality}\\
+    &< 6+5.
+\end{align*}
+Going back to $(*)$, 
+\begin{align*}
+    |f(x) - f(5)| &= |x-5||x+5| \\
+    &< \delta \cdot 11 \\
+    &\le \varepsilon \qquad \text{since }\delta \le \frac{\varepsilon}{11}.
+\end{align*}
+\end{proof}
+
+\begin{example}
+Prove that $f : \R \to \R$ given by $f(x) = x^3$ is continuous at $-3$. (Hint: $x^3 + 27 = (x+3)(x^2 - 3x+9)$.
+\end{example}
+
+\textcolor{blue}{
+Scratchwork:
+want $|f(x) - f(-3) = |x+3||x^2 - 3x+9| < \varepsilon$ when $|x+3 < \delta$. If we make $\delta \le 1$, then $|x+3| < 1$, so $-4 < x < -2$. Then $|x^2 - 3x + 9| \le |x|^2 + 3|x| + 9 < 4^2 + 3(4) + 9 = 37$.\\
+}
+
+In the actual proof, we start with: let $\varepsilon > 0$. Let $\delta = \min\left(1, \frac \varepsilon {37}\right)$.
+
+\begin{example}
+Let $f, g: \R^m \to \R^n$. Prove that, if $f$ and $g$ are both continuous at some point $\vec c \in \R^m$, then so is $f - 2g$.
+\end{example}
+
+\textcolor{blue}{
+Scratchwork: Want $||(f-2g) (\vec x) - (f - 2g) ( \vec c)|| < \epsilon$ when $||\vec x - \vec c|| < \delta$. This is equivalent to:
+\begin{align*}
+    ||f(\vec x) - f(\vec c) - 2[g(\vec x) - g(\vec c)]|| \le ||f(\vec x) - f(\vec c)|| + 2||g(\vec x) - g(\vec c)|| < \epsilon
+\end{align*}
+We can take $||f(\vec x) - f(\vec c)|| < \frac \epsilon 2$ and $||g(\vec x) - g(\vec c) < \frac \epsilon 4$, for example.
+}
+
+
+\begin{proof}
+Since $f$ is continuous at $\vec c$ and $\frac \epsilon 2 > 0$, there exists $\delta_1 > 0$ such that, if $||\vec x - \vec c|| < \delta_1$, then $||f(\vec x) - f(\vec c)|| < \frac \epsilon 2$. Since $g$ is continuous at $\vec c$ and $\frac \epsilon 4 > 0$, there exists $\delta_2 > 0$ such that, if $||\vec x - \vec c|| < \delta_2$, then $||f(\vec x) - f(\vec c)|| < \frac \epsilon 4$. \\
+
+Let $\delta = \min(\delta_1, \delta_2)$. Let $\vec x \in \R^m$ such that $|| \vec x - \vec c|| < \delta$. Then $||\vec x - \vec c|| < \delta_1$ and $||\vec x - \vec c || < \delta_2$, and we can essentially apply the scratchwork to find $||(f-2g) (\vec x) - (f - 2g) ( \vec c)|| < \epsilon$. 
+\end{proof}

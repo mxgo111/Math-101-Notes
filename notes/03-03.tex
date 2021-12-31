@@ -1,0 +1,66 @@
+\section{Lecture 9: 03/03/21}
+
+\begin{example}
+Last week we saw that $(\Z_4,+)$ and $U_5,\cdot_5$ have the same group table. Notice that we can pair up the elements quite nicely. This is like a bijection from $\Z_4$ to $U_5$ (or the other way around)!
+\end{example}
+
+\begin{question}
+How can we define a general notion of two groups $(G,*)$ and $(H,\triangle)$ being the ``same'' in this way?
+\end{question}
+In general, we want some bijection $\varphi: G \rightarrow H$ such that 
+\[\varphi(g_1*g_2) = \varphi(g_1) \triangle \varphi(g_2)\]
+
+\subsection{Homomorphisms, Isomorphisms}
+
+\begin{definition}[Homomorphism]
+Let $(G,*)$ and $(H,\triangle)$ be two groups. Then a function $\varphi:G\rightarrow H$ is a \textit{homomorphism} if 
+\[\varphi(g_1*g_2) = \varphi(g_1)\triangle \varphi(g_2)\]
+for all $g_1,g_2\in G$.
+\end{definition}
+\begin{definition}[Isomorphism]
+An \textit{isomorphism} is a bijective homomorphism. If there is an isomorphism from $G$ to $H$, we say that $G$ is \textit{isomorphic} to $H$, written $G \cong H$.
+\end{definition}
+
+\begin{example}
+Are the following functions homomorphisms? Isomorphisms?
+\begin{enumerate}
+    \item $\varphi:\Z \rightarrow \Z_n$ given by $\varphi(k)=[k]_n$.
+    \[\varphi(g_1+g_2) \stackrel{?}{=} \varphi(g_1) +_n \varphi(g_2)\]
+    This is true because we know that 
+    \[[g_1+g_2]_n = [g_1]_n +_n [g_2]_n\]
+    So $\varphi$ is a homomorphism.
+    \medskip
+    
+    Is $\varphi$ an isomorphism? \textbf{No.} $\varphi$ is not injective. We can see that $\varphi(0)=[0]_n=\varphi(n)$.
+    \item $\varphi:\R_{>0} \rightarrow \R$ given by $\varphi(x)=\ln(x)$.
+    The operation on $\R_{>0}$ is multiplication and the operation on $\R$ is addition, so we are really asking if
+    \[\varphi(a\cdot b) \stackrel{?}{=} \varphi(a)+\varphi(b)\]
+    \[\ln(a\cdot b) \stackrel{?}{=} \ln(a)+\ln(b)\]
+    which is true! This is one of our logarithm rules.
+    \medskip
+    
+    Is $\varphi$ an isomorphism? \textbf{Yes.} We can see graphically that $\varphi$ is surjective and injective, so $\varphi$ is an isomorphism. (We also know that $\varphi$ has an inverse, $\varphi^{-1}(x)=e^x$, so $\varphi$ is bijective.)
+\end{enumerate}
+\end{example}
+
+\begin{note}
+The ``number of elements in a group $G$'' (\textit{order} of $G$) is a structural property. If $G$ and $H$ are isomorphic, $|G|=|H|$.
+\end{note}
+
+\subsection{Kernel, Image}
+
+\begin{definition}[Kernel]
+Let $\varphi:G \rightarrow H$ be a homomorphism. The \textit{kernel} of $\varphi$, denoted $\ker\varphi$, is defined to be
+\[\{g\in G | \varphi(g) = e_H\}\]
+where $e_H$ is the identity of $H$.
+\end{definition}
+
+\begin{definition}[Image]
+The \textit{image} of a homomorphism $\varphi:G \rightarrow H$ is the set
+\[\im\varphi := \{\varphi(g) | g\in G\}\]
+\end{definition}
+
+\begin{note}
+Some notation we use to say ``multiples of $n$'': $n\Z$
+\end{note}
+

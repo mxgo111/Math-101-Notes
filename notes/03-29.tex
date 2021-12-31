@@ -1,0 +1,143 @@
+\section{Lecture 16: 03/29/21}
+
+\begin{example}[Triangle Inequality]
+If $|a - 3| < 0.1$ and $|b - 4| < 0.2$, then $|a + b - 7| < 0.3$.
+\end{example}
+
+\begin{proof}
+We can show this using the triangle inequality:
+\begin{align*}
+    |(a - 3) + (b - 4)| \le |a - 3| + | b - 4| < 0.1 + 0.2 = 0.3.
+\end{align*}
+\end{proof}
+
+\subsection{Axioms for $\R$}
+
+\begin{definition}[Axioms for $\R$] 
+\quad
+\begin{enumerate}
+    \item $(\R, +)$ is an abelian group with identity element $0$.
+    \item $(\R \backslash \{0\}, \cdot)$ is an abelian group with identity element $1$.
+    \item $x(y + z) = xy + xz$ for all $x, y, z \in \R$.
+    \item There is a relation $<$ on $\R$ satisfying the following properties:
+    \begin{enumerate}
+        \item If $x, y \in \R$, exactly one of the following is true: $x<y$, $y < x$, or $x = y$.
+        \item If $x<y$ and $y < z$, then $x < z$.
+        \item If $x < y$, then $x + z < y + z$.
+        \item If $x > 0$ and $y > 0$, then $xy > 0$.
+    \end{enumerate}
+    \item The limit of a sequence for $\pi$ converges.
+\end{enumerate}
+\end{definition}
+
+\subsection{Sequences, Convergence}
+
+\begin{definition}[Sequences]
+A \textit{sequence} is an infinite ordered list of numbers.
+\end{definition}
+Notations:
+\begin{itemize}
+    \item $(1,2,4,8,\dots)$
+    \item $(2^n)^\infty_{n=0}$
+\end{itemize}
+
+\begin{example}
+\label{ex:real-analysis-1}
+$\lim_{n\to \infty}6+\frac{6\sin(n)}{n}=6$
+\end{example}
+
+\begin{definition}[Sequence Convergence]
+A sequence $(a_n)$ \textit{converges} to a limit $L$ if, for every $\varepsilon>0$, there exists $N$ such that for all $n \in N$ with $n > N$, $|a_n - L| < \varepsilon$.
+\end{definition}
+\begin{note} Structure of a proof that $(a_n) \rightarrow L$:
+\begin{itemize}
+    \item Let $\varepsilon >0$.
+    \item Let $N=$ something you came up with depending on $\varepsilon$
+    \item Let $n>N$
+    \item Show that $|a_n-L|<\varepsilon$
+\end{itemize}
+\end{note}
+
+We will now prove Example \ref{ex:real-analysis-1}.
+
+\begin{proof}
+Let $\varepsilon > 0$. 
+\newline
+{
+\color{blue}
+Scratch work: We want $|6+\frac{4\sin(n)}{n}-6|<\varepsilon
+$ when $n>N$. So, we want $\frac{4\sin(n)}{n}<\varepsilon$. We know that
+\[
+\frac{4}{n} |\sin n | \le \frac 4 n < \frac 4 N.
+\]
+We want $\frac 4 N \le \varepsilon$, so we can let $N \ge \frac 4 \varepsilon$.
+}
+\\
+
+Let $N = \frac 4 \varepsilon$. Let $n > N$. Then:
+\begin{align*}
+    | 6 + \frac{4\sin n}{n} - 6 | &= \frac{4}{n}|\sin n| \\
+    &\le \frac 4 n \quad \text{since }|\sin n| \le 1 \\
+    &< \frac 4 N \quad \text{since } n > N \\
+    &=\varepsilon \quad \text{since }N = \frac 4 \varepsilon.
+\end{align*}
+\end{proof}
+
+\begin{example}
+Prove that $\lim_{k \to \infty} \frac{3k-2}{5k} = \frac 3 5$.
+\end{example}
+
+\begin{proof}
+Let $\varepsilon > 0$. Let $N = \frac 2 {5\varepsilon}$. Let $k > N$. Then,
+\begin{align*}
+    \left|\frac{3k-2}{5k} - \frac 3 5 \right| &= \left|\frac 3 5 - \frac 2 {5k} - \frac 3 5\right| \\
+    &= \frac{2}{5k} \\
+    &< \frac{2}{5N} \\
+    &= \varepsilon.
+\end{align*}
+\end{proof}
+
+\subsection{Divergence}
+
+\begin{example}
+The sequence $(1, -1, 1, -1, 1, -1, \dots)$ diverges.
+\end{example}
+
+\begin{definition}[Divergence]
+A sequence $(a_n)$ diverges if $(a_n) \nrightarrow L $  for any $L \in \R$.
+\end{definition}
+
+To prove something diverges, let $L \in \R$, and we prove that $(a_n) \nrightarrow L$ (show that there exists $\varepsilon$ that doesn't work. Next time we'll show an easier way to prove some sequences diverge.
+
+\subsection{Theorems on Convergence}
+
+\begin{theorem}[Algebraic Limit Theorem]
+Let $(a_n)$ and $(b_n)$ be convergent sequences, and let $a = \lim_{n \to \infty} a_n$ and $b = \lim_{n \to \infty} b_n$.
+\begin{enumerate}
+    \item $(ca_n) \to ca$ for all $c \in \R$.
+    \item $(a_n+b_n) \to a+b$  
+    \item $(a_nb_n) \to ab$.
+    \item If $b_n \neq 0$ for all $N \in \N$, and if $b \neq 0$, then $\left(\frac{a_n}{b_n}\right) \to \frac a b$.
+\end{enumerate}
+\end{theorem}
+
+\begin{theorem}[Order Limit Theorem]
+If $a_n \leq b_n$ for all $n\in \N$, then $a\leq b$.
+\end{theorem}
+
+We will prove part $(2)$ of the Algebraic Limit Theorem. We have that:
+
+\begin{proof}
+Let $\varepsilon > 0$. Since $(a_n) \to a$, there exists $N_1$ such that, if $n > N_1$, then $|a_n - a| < \varepsilon /2$. And since $(b_n) \to b$, there exists $N_2$ such that, if $n > N_2$, then $|b_n - b| < \varepsilon /2$. Let $N=max(N_1,N_2)$. Let $n>N$. Then $n>N_1$ and $n>N_2$, so $|a_n-a|<\frac{\varepsilon}{2}$ and $|b_n-b|<\frac{\varepsilon}{2}$.
+Then,
+\begin{align*}
+    |a_n + b_n - (a+b)| &\le |a_n - a| + |b_n - b| \\
+    &< \frac \varepsilon 2 + \frac \varepsilon 2 \\
+    &= \varepsilon.
+\end{align*}
+\end{proof}
+
+We will prove the Order Limit Theorem:
+\begin{proof}(by contrapositive)
+Suppose $a>b$. Let $\varepsilon = \frac{a-b}{2}$. Since $(a_n)\to a$, there exists $N_1$ such that if $n>N_1$, then $|a_n-a|<\varepsilon$. And, since $(b_n)\to b$, there exists $N_2$ such that if $n>N_2$, then $|b_n-b|<\varepsilon$. Let $n > \max(N_1, N_2)$. Then $|a_n - a| < \varepsilon$ and $|b_n - b| < \varepsilon$, Then $a_n > a - \varepsilon = \frac{a+b}2$ and $b_n < b + \varepsilon = \frac{a+b}2$. So, $a_n > b_n$.
+\end{proof}

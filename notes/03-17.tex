@@ -1,0 +1,58 @@
+\section{Lecture 13: 03/17/21}
+
+Recall from last time:
+\begin{itemize}
+    \item If $H \triangleleft G$, $G/H = \{\text{cosets of $H$ in $G$}\}$ is a group with operation $(aH)(bH) = abH$.
+    \item Examples:
+    \begin{itemize}
+        \item $\Z/n\Z = \Z_n$. E.g. $\Z/4\Z = \{0 + 4\Z, 1 + 4 \Z, 2 + 4\Z, 3 + 4\Z\}$.
+        \item If $G$ is a group, then $G/G$ is the trivial group, and $G/\{e\} \cong G$.
+    \end{itemize}
+\end{itemize}
+
+\subsection{First Isomorphism Theorem}
+
+\begin{theorem}[First Isomorphism Theorem]
+For a group $G$ and a homomorphism $\varphi: G \to H$, we have that:
+\[
+G/\ker (\varphi) \cong \im \varphi.
+\]
+\end{theorem}
+
+We give examples of this:
+
+\begin{example}
+If $\phi: G \to H$ is a group homomorphism with $\ker \phi = \{e_G\}$, we have seen previously in Problem Set 7 that $G \cong \im \phi$. Then $G/\ker\phi = G /\{e_G\} \cong \im \phi$.
+\end{example}
+
+\begin{example}
+Let $n \in \N$, and let $\phi : \Z \to \Z_n$ be defined by $\phi(x) = [x]_n$. Then $\ker \phi = n\Z$, and $\Z/\ker\phi = \Z/n\Z = \Z_n$, and $\im \phi = \Z_n$, so $\Z/\ker\phi \cong \im \phi$.
+\end{example}
+
+\begin{example}
+Consider the homomorphism $\phi : \Z \to \R^\times$ defined by $\phi (n) = (-1)^n$. Then $\ker \phi = \{n | (-1)^n = 1\} = 2\Z$, $\Z/\ker\phi = \Z/2\Z = \Z_2$, and $\im \phi = \{(-1)^n | n \in \Z\} = \{\pm 1\}$. Since there is only one group of order $2$ (previous homework), these groups must be isomorphic.
+\end{example}
+
+Now we give a proof of the First Isomorphism Theorem:
+
+\begin{proof}
+\begin{enumerate}
+    \item First we must prove the kernel is a normal subgroup so that the quotient is well-defined (i.e. $\ker \phi \triangleleft G$). This is proved in Problem Set 7 $\# 2(e)$.
+    \item $G /\ker \phi \cong \im \phi$. We will define $\psi : G /\ker \phi \to \im \phi$ by $\psi (gK) = \phi(g)$. We want to show that $\psi$ is a bijection, a homomorphism, and well-defined.
+\end{enumerate}
+
+Let $K = \ker \phi$. Define $\psi : G/K \to \im \phi$ by $\psi(gK) = \phi(g)$. To show it is well-defined, suppose $g_1K = g_2K$ for some $g_1, g_2 \in G$. Then $g_1 \in g_2K$, so we can write $g_1 = g_2k$ for some $k \in K$. Then $\phi(g_1) = \phi(g_2k) = \phi(g_2)\phi(k) = \phi(g_2)$ since $k \in \ker\phi$. This means that $\psi(g_1K) = \psi(g_2K)$, so $\psi$ is well defined (equal things map to the same thing). \\
+
+Now to show $\psi$ is a homomorphism, let $g_1K, g_2K \in G/K$. Then,
+\begin{align*}
+    \psi((g_1K)(g_2K)) &= \psi(g_1g_2K) \\
+    &= \phi(g_1g_2) \\
+    &= \phi(g_1)\phi(g_2) \\
+    &= \psi(g_1K)\psi(g_2K)
+\end{align*}
+which means that $\psi$ is a homomorphism.\\
+
+Now to show that $\psi$ is a bijection, we show it is injective and surjective. For injectivity, suppose that $\psi (g_1K) = \psi(g_2K)$ for some $g_1K, g_2K \in G/K$. Then by definition of $\psi$, $\phi(g_1) = \phi(g_2)$. By Problem set $7$ $\# 2(f)$, we have $g_1 = g_2k$ for some $k \in \ker \phi$, so $g_1 \in g_2K$, so $g_1K = g_2K$.\\
+
+For surjectivity, let $h = \im \phi$. Then $\exists g \in G$ such that $\phi(g) = h$. This means that $\psi(gK) = \phi(g) = h$, so $\psi$ is surjective (and injective) and thus bijective.
+\end{proof}

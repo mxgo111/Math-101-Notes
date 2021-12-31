@@ -1,0 +1,81 @@
+\section{Lecture 3: 02/01/2021}
+
+\subsection{Types of Proof}
+Today we will look at three ways to show an if-then statement : direct, contrapositive, and contradiction.
+\smallbreak
+
+From the Preparatory Problem Set:
+\begin{itemize}
+    \item Statement: If $ab > 0$, then $a > 0$ and $b > 0$. (\textbf{False})
+    \item Converse: If $a > 0$ and $b > 0$, then $ab > 0$. (\textbf{True})
+    \item Contrapositve: If it's not true that $a > 0$ and $b > 0$, then it's not true that $ab > 0$. (\textbf{False})
+\end{itemize}
+
+Recall that ``$P$ iff $Q$" means that ``If $P$, then $Q$" and "If $Q$, then $P$". In other words,
+\[
+P \implies Q \; \; AND \; \; Q \implies P.
+\]
+
+Note: \textit{a statement is equivalent to its contrapositive}!
+
+\begin{example}
+Negate the following statements:
+\begin{enumerate}
+    \item $x > 0$ or $x$ is rational.
+    \item Every country in the U.S. as at least $5$ farms.
+\end{enumerate}
+\end{example}
+
+\begin{proof}\quad
+\begin{enumerate}
+    \item $x \le 0$ AND $x$ is irrational.
+    \item There exists (we use the symbol $\exists$ often) a country in the U.S. with $< 5$ farms.
+\end{enumerate}
+\end{proof}
+
+There is also a shorthand symbol for ``for all", denoted by $\forall$.
+
+We given an example of a direct proof. 
+\begin{example}
+Prove that, if $a$ and $b$ are integers and $a | b$, then $a | b^2$.
+\end{example}
+
+\begin{proof}
+Suppose $a$ and $b$ are integers and $a | b$. Then $b = ak$ for some integer $k$. To prove that $a | b^2$, we want to show that $b^2 = ak'$ for some $k'$. We can take $k' = ak\cdot b$, which proves the statement.
+\end{proof}
+
+Now we'll give an example of a contrapositive proof (proving the contrapositive!)
+
+\begin{example}
+Any integer whose square is even must be even. (In other words, if $n$ is an integer such that $n^2$ is even, then $n$ is even). Give a contrapositive proof of the claim.
+\end{example}
+
+\begin{proof}
+Let $n$ be an integer. Suppose $n$ is odd. Then, $n = 2k+1$ for some integer $k$. So $n^2 = 4k^2 + 4k + 1 = 2(2k^2 + 2k) + 1$ is odd. This proves the contrapositive.
+\end{proof}
+
+Tangential note: before we had assumed that every integer was either even or odd. However, now we know how to prove it! We can use the division algorithm (theorem) that states:
+
+\begin{theorem}
+For any integer $a$ and positive integer $b$, there exist integers $q$ and $r$ such that $a = bq + r$ and $0 \le r < b$.
+\end{theorem}
+
+Since this is true for all $a$ and $b$, we can take $b = 2$, which shows that $r = 0$ or $1$ for all integers (which implies that every integer is either even or odd - convince yourself!).
+
+\begin{example}
+Let $m$ and $n$ be integers. If $m$ and $n$ have different parity, then their sum is odd.
+\end{example}
+
+\begin{proof}
+Let $m, n$ be integers with different parity. We use the term "without loss of generality" (WLOG) to cover identical cases. In this case, because $m+n$ is the same as $n+m$, we can say: WLOG let $m$ be even and $n$ be odd.
+\end{proof}
+
+Finally, we do a proof of contradiction. In a contradiction proof of ``If $P$, then $Q$", we suppose that $P$ is true and $Q$ is false. We then try to work towards some contradiction. The advantages of this method is that you start off with more information, but the disadvantage is that you don't know where you are going - you just want to find some sort of contradiction.
+
+\begin{example}
+Prove that $\sqrt{2}$ is irrational.
+\end{example}
+
+\begin{proof}
+Suppose for the sake of contradiction that $\sqrt 2$ is rational. Then $\sqrt 2 = \frac a b$ where $a, b$ are integers that share no common divisors $ > 1$. Therefore $a = b\sqrt 2$, and $a^2 = 2b^2$. Then $a^2$ is even, which means that $a$ is even. Then $a = 2k$ for some integer $k$. Plugging this in, we have $4k^2 = 2b^2$, so $b^2 = 2k^2$. Then $b^2$ is even, so $b$ is even. This is a contradiction, since $a$ and $b$ share the common divisor $2$ although we had assumed they shared no common divisors.
+\end{proof}

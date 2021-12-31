@@ -1,0 +1,48 @@
+\section{Lecture 24: 4/28/2021}
+Today, we are going to work on generalizing the notions of continuity and convergence we have been talking about. What we are interested in when we are generalizing these definitions in is first talking about how \textit{close} something is to anther i.e. distance. To do this, we will define a construction called a metric space as below.
+
+\begin{definition}[Metric space]
+A \textit{metric space} $(X,d)$ is a set $X$ together with a ``distance function" or ``metric" $d: X \times X \to \R$ such that:
+\begin{enumerate}
+    \item $d(x, x) = 0$
+    \item $d(x,y) > 0$ if $x \neq y$
+    \item $d(x,y) = d(y,x)$
+    \item triangle inequality should hold: $d(x,z) \leq d(x,y) + d(y,z)$ i.e. 
+    $$
+    ||\vec{x} - \vec{y}|| = ||\vec{x}-\vec{y}+\vec{y}-\vec{z}|| \leq ||\vec{x}-\vec{y}|| + ||\vec{y}-\vec{z}||
+    $$
+    for all $x,y,z \in X$.
+\end{enumerate}
+\end{definition}
+
+This has many applications to Computer Science (e.g. Hamming distance and error-correcting codes) and Linguistics (e.g. how similar two languages are to each other). Using this construction, we can \textit{rewrite} our former definitions for convergence and continuity with a metric space. This looks like:
+\begin{definition}[Convergence]
+A sequence $(\vec{x}_k)$ in $(X, d)$, converges to $\vec{L}$ if, for every $\varepsilon > 0$, there exists $N$ such that, for all $k>N$, we have $d(x)k, L) < \varepsilon$.
+\end{definition}
+
+\begin{definition}
+A function $f:(X, d_x) \to (Y, d_y)$ is continuous at $\vec{c}\in \R^m$ if, for every $\varepsilon > 0$, there exists $\delta > 0$ such that, for all $\vec{x}\in \R^m$ with $d_x(x,c)<\delta$, we have $d_y(f(x), f(c)) < \varepsilon$.
+\end{definition}
+
+The study of metric spaces is much of what real analysts concern themselves with. There is a saying about another branch of mathematics that ``A topologist is a mathematician that can't tell the difference between a coffee cup and a donut." This is because in topology, we conern ourselves with constructions such as $\textit{homeomorphisms}$ which is a bijection between two objects $f: \text{cup} \to \text{donut}$ such that $f, f^{-1}$ are both continuous. This is to say that topologists generally care about continuity whereas analysts care about distance. 
+
+\begin{definition}[Topological Space]
+A \textit{topological space} $(X, \mathcal{O})$ is a set $X$ with a collection of subsets of $X$ (the ``open sets") such that:
+\begin{enumerate}
+    \item $X, \O \in \mathcal{O}$
+    \item If $u_1, \dots, u_n \in \mathcal{O},$ then $\bigcap_{x_i}^nu_i \in \mathcal{O}$.
+    \item If $U_i \in \mathcal{O}$ for $i \in I$, then $\cup_{i\in I}u_i \in \mathcal{O}$.
+\end{enumerate}
+\end{definition}
+
+\subsection{What's Next?}
+That concludes the content of Math 101! We draw for you the following map of math courses at Harvard. As small notes, to the below. In a course like Math 112, you will study sequences and continuity as well as metric spaces. In math 131, you will learn topology which is largely concerned with whether two spaces are homeomorphic. Things that are related to other things from this course are Math 122 which is group theory and vector spaces (aka linear spaces for math 21bers). Finally, you may also find yourself interested n math 124 which is number theory. You will look at factorization and prime numbers as well as other cool things!
+
+\[\begin{tikzcd}
+ & & & 212 & & &     \\
+ & & {112, 114} \arrow[ru] \arrow[r, "\text{diff geo}"] & 136 \arrow[r] & 230 & & \\
+\text{101} \arrow[rru, "\text{real analysis}" description] \arrow[rr, "\text{topology}" description] \arrow[rrd, "\text{algebra}" description] \arrow[rdd, "\text{complex analysis}" description] & & 131 \arrow[r] \arrow[rr, bend right] & 132 \arrow[r] \arrow[u] & 231 & 137 \arrow[r] & 232 \\
+ & & 121/122 \arrow[r] & 123 \arrow[r] \arrow[d, "\text{NT}"] \arrow[rru, "\text{alg geo}" description] & 221 \arrow[d, "\text{alg NT}"] \arrow[rru, dotted] & & \\
+ & 113 \arrow[d] \arrow[rd] & & 129 \arrow[r] \arrow[ld, "\text{analytic NT}" description] & 223 & & \\
+ & 213 & 229 & & & &
+\end{tikzcd}\]

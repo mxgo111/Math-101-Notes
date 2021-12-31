@@ -1,0 +1,105 @@
+\section{Lecture 6: 02/10/2021}
+
+Agenda today:
+\begin{itemize}
+    \item Relations
+    \item Equivalence relations
+    \item Equivalence classes, with key example $\Z_n$.
+\end{itemize}
+
+\begin{example}\quad
+\begin{itemize}
+    \item $\ge$ on $\R$.
+    \item $|$ (divides) on $\Z$.
+\end{itemize}
+\end{example}
+
+\begin{example}
+$<$ on $S = \{3, 4, 5\}$. We can write:
+$\{(3, 4), (4, 5), (3,5)\} \subset S \times S$ is the relation.
+\end{example}
+
+\subsection{Relations, Equivalence Relations}
+
+\begin{definition}[Relation]
+A \textit{relation} on a set $S$ is a subset of $S \times S$.
+\end{definition}
+
+\begin{definition}[Equivalence Relation]
+A relation $R$ on a set $S$ is called an \textit{equivalence relation} if it satisfies the following $3$ axioms:
+\begin{itemize}
+    \item \textit{Reflexivity}: If $a \in S$, then $a$ $R$ $a$.
+    \item \textit{Symmetry}: If $a, b \in S$, such that $a \ R \ b$, then $b \ R \ a$.
+    \item \textit{Transitivity}: If $a,b,c \in S$ such that $a \ R \ b$ and $b \ R \ c$ then $a \ R \ c$.
+\end{itemize}
+\end{definition}
+
+\begin{example}
+$\equiv \pmod n$ for a fixed $n \in \N$ where we write $x \equiv y \pmod n$ if $n | (x-y)$.
+\end{example}
+
+\begin{proof}\quad
+\begin{itemize}
+    \item Reflexive: $a \equiv a \pmod n$ for every $a$ because $n | (a - a)$, since $0 = n \cdot 0$.
+    \item Symmetric: If $a \equiv b \pmod n$, then:
+    \begin{align*}
+        n &| (a - b) \\
+        \implies a - b &= nk \quad \text{for some integer $k$}\\
+        \implies b - a &= n(-k) \\
+        \implies n &| (b - a) \\
+        \implies b &\equiv a \pmod n.
+    \end{align*}
+    \item Transitive: If $a \equiv b \pmod n$ and $b \equiv c \pmod n$, is $a \equiv c \pmod n$? Yep, and the proof is an exercise for the reader :)
+\end{itemize}
+\end{proof}
+
+\begin{definition}
+Let $\sim$ be an equivalence relation on a set $S$. For any $s \in S$, we define the equivalence class with representative $s$, denoted $[s]$, to be:
+\[
+[s] = \{x \in S | x \sim s\}.
+\]
+Note that an equivalence class has many representatives (elements in the equivalence class), and you can choose any one of them to represent your equivalence class.
+\end{definition}
+
+In general, the equivalence relation \textit{partition} the set into different (non-empty) equivalence classes.\\
+
+If $\sim$ is an equivalence relation on a set $S$, then every element of $S$ is in exactly $1$ equivalence class.
+
+\subsection{Examples}
+
+\begin{example}
+For each of the equivalence relations, give a complete non-repeating list of equivalence classes, and describe each equivalence class.
+\begin{itemize}
+    \item ``has the same sign as": $\{[-1], [0], [1]\}$ (a.k.a. the negative numbers, zero, and the positive numbers)
+    \item $\equiv \pmod n$ for a fixed $n \in \N$, where we write $x \equiv y \pmod n$ if $n | (x-y)$.
+    \begin{proof}
+    For example, take $n = 3$. Then we could write:
+    \begin{align*}
+    [1] &= \{x \in \Z \ | x \equiv 1 \pmod 3\} \\
+    &= \{3q + 1 | q \in \Z\}\\
+    [2] &= \{3q + 2 | q \in \Z\}\\
+    [0] &= \{3q + 0 | q \in \Z\}
+    \end{align*}
+    Thus the complete list is $\{[0], [1], [2]\} = \Z_3$, or ``integers mod 3". Note that every integer can be written as $3q+0, 3q+1$, or $3q+2$ by the division algorithm, so we know that these equivalence classes cover everything.\\
+    
+    Now for general $n$:
+    \[
+    [r] = \{nq + r | q \in \Z\}
+    \]
+    Thus, the complete list is:
+    \[
+    \{[0], [1], \dots, [n-1]\} = \Z_n
+    \]
+    \end{proof}
+\end{itemize}
+\end{example}
+
+\begin{example}
+Let $S$ be a set, and let $\sim$ be an equivalence relation on $S$. Let $a, b \in S$. Prove that $[a] = [b]$ iff $a \sim b$.
+\end{example}
+
+\begin{proof}
+$\implies$. Suppose $[a] = [b]$. Since $\sim$ is reflexive, $a \sim a$. By definition of $[a]$, $a \in [a]$. Since $[a] = [b]$, $a \in [b]$. Then $a \sim b$ by definition of $[b]$.\\
+
+$\impliedby$. Suppose $a \sim b$. Then we show both set inclusions to show that $[a] = [b]$ (see Janet's notes for full solutions).
+\end{proof}

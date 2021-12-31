@@ -1,0 +1,71 @@
+\section{Lecture 21: 04/19/21}
+
+Today we'll talk about open subsets of $\R^m$!
+
+\subsection{Open Subsets}
+
+\begin{definition}
+A set $U$ in $\R^m$ is \textit{open} if, for every $\vec x \in U$, there exists $\eps > 0$ such that $V_\eps (\vec x) \subseteq U$.
+\end{definition}
+
+\begin{example}
+$\R^m$ and $\emptyset$ are both open. 
+For $\R^m$, if we let $\vec x\in \R^m$, then $V_{50}(\vec x) \subseteq \R^m$. So, $\R^m$ is open.
+
+For $\emptyset$, the statement is vacuously true.
+\end{example}
+
+\begin{example}
+Let $\vec c \in \R^m$ and $r > 0$. Recall that we call $V_r(\vec c)$ the ``open ball of radius $r$ centered at $\vec c$". Prove that $V_r(\vec c)$ is open.
+\end{example}
+
+\begin{proof}
+Let $\vec x \in V_r(\vec c)$. Then $||\vec x - \vec c || < r$. Let $\eps = r - ||\vec x - \vec c|| > 0$.
+
+We want to show that $V_\eps (\vec x) \subseteq V_r(\vec c).$ Let $\vec y \in V_{\eps} (\vec x)$. Then, $||\vec y - \vec x|| < \eps$, so 
+\begin{align*}
+    ||\vec y - \vec c|| &= ||\vec y - \vec x + \vec x - \vec c|| \\
+    &\le ||\vec y - \vec x|| + ||\vec x - \vec c|| \qquad \text{by triangle inequality}\\
+    &< \eps + ||\vec x - \vec c|| \\
+    &= r \qquad \text{by definition of $\eps$.}
+\end{align*}
+So, we've shown that $V_\eps(\vec x) \subseteq V_r(\vec c)$.
+
+\end{proof}
+
+\begin{example}
+If $a, b \in \R$ with $a < b$, is the interval $(a, b]$ in $\R$ open? Prove or disprove.
+\end{example}
+
+\begin{proof}
+No, because of $b$. For every $\eps > 0$, $V_\eps(b) \nsubseteq (a,b]$, because we can take the point $b + \frac \eps 2 \in V_\eps(b)$, but $b + \frac \eps 2 \notin (a,b]$.
+\end{proof}
+
+Some examples of open sets:
+\begin{example}
+$U = \{(x,y) \in \R^2 | y > 3\}$.
+\end{example}
+
+Some examples of not open sets (note: not open does not equal closed!):
+\begin{example}\quad
+\begin{itemize}
+    \item $U = \{(x, y) \in \R^2 | x^2 + y^2 \le 1\}$.
+    \item $U = \{(4,y) \in \R^2 | y > 3\}$.
+\end{itemize}
+\end{example}
+
+\begin{definition}[Interior Points]
+Let $A \subseteq \R^m$. Let $\vec x \in \R^m$. We call $\vec x$ an \textit{interior} point of $A$ if there exists $\eps > 0$ such that $V_{\eps}(\vec x) \subseteq A$ (In particular, this can only happen if $\vec x \in A$.
+\end{definition}
+
+\begin{example}
+There are no interior points of $\Q$. Let $q \in \Q$. Then $V_\eps(q) = (q - \eps, q + \eps)$ always has an irrational number, so $V_\eps(q) \neq \Q$, so $q$ is not an interior point.
+\end{example}
+
+\begin{example}
+In $\R^m$, consider the open balls $V_{1/n}(\vec 0)$ where $n \in \N$. We write their intersection as $\bigcap_{n \in \N} V_{1/n}(\vec 0)$. Prove the intersection is $\{\vec 0\}$.
+\end{example}
+
+\begin{proof}
+We do this using set equality. (See the worksheet solutions for the remainder!)
+\end{proof}

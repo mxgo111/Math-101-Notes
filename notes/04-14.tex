@@ -1,0 +1,91 @@
+\section{Lecture 20: 04/14/21}
+Today we are going to be talking about function discontinuity! This is in contrast to the last couple lectures where we have been interested in continuous functions.\\
+
+As a quick refresher, here is our standard definition of continuity:
+\begin{definition}[Continuity]
+Let $f:\R^m \to \R^n$ be a function and $\vec{c} \in \R^m$. We say that $f$ is $\underline{continuous}$ at $\vec{c}$ if, for every $\varepsilon > 0$, there exists $\delta > 0$ such that, for all $\vec{x} \in \R^m$ with $||\vec{x} - \vec{c}|| < \delta$, $||f(\vec{x}) - f(\vec{c})|| < \varepsilon$.
+\end{definition}
+
+\subsection{Function Discontinuity}
+
+\begin{example}
+Suppose we want to prove that a function $f: \R^m \to \R^n$ is \textit{not} continuous at some point $\vec c \in \R^m$. What should the structure of the proof be?
+\end{example}
+
+In this case, we want to negate the quantifiers! We need to show that there exists an $\varepsilon > 0$ such that, for every $\delta > 0$, there exists $\vec x \in \R^m$ with $||\vec x - \vec c|| < \delta$ and $||f(\vec x) - f(\vec c)|| \ge \varepsilon$. As a reminder, when we negate quantifiers we have that $\exists \to \forall$ and $\forall \to \exists$.
+
+Let $\varepsilon$ be something we pick. Let $\delta > 0$. Let $\vec x$ be something we pick.
+
+\begin{align*}
+    &\vdots \\
+    &\text{Therefore, } ||\vec x - \vec c|| < \delta \text{ and } ||f(\vec x) - f(\vec c)|| \ge \varepsilon.
+\end{align*}
+
+\begin{example}
+Prove that $f: \R \to \R$ defined by:
+\[
+f(x) = \begin{cases}
+1 & \text{if } x \ge 3 \\
+0.99 & \text{if } x < 3
+\end{cases}
+\]
+is discontinuous at $3$.
+\end{example}
+
+\begin{proof}
+Let $\varepsilon = \frac {0.01}2$. Let $\delta > 0$, and let $x = 3 - \frac \delta 2$. So, we have:
+\[
+|x-3| = \left|-\frac \delta 2\right| = \frac \delta 2 < \delta
+\]
+and 
+\[
+|f(x) - f(3)| = |0.99 - 1| = 0.01 \ge \varepsilon.
+\]
+\end{proof}
+
+\begin{example}
+Let $f : \R \to \R$ be the function given by:
+\[
+f(x) = \begin{cases}
+0 & \text{if }x \in \Q \\
+1 & \text{if }x \notin \Q
+\end{cases}.
+\]
+Prove that $f$ is discontinuous at $x = c$ for every $c \in \R$.
+\end{example}
+
+\begin{proof}
+Let $c \in \R$. We will show that $f$ is discontinuous at $x = c$. Let $\epsilon = 1$ (or something $< 1$). Let $\delta > 0$. We have $2$ cases: $c \in \Q$ or $c \notin \Q$.
+\begin{itemize}
+    \item (Case 1) Suppose $c \in \Q$. By fact below, there exists an irrational number $x \in (c - \delta, c + \delta)$. Then, $|x - c| < \delta$ and $|f(x) - f(c)| = |1 - 0| = 1 \ge \varepsilon$.
+    \item (Case 2) Very similar to case 1!
+\end{itemize}
+\end{proof}
+
+\begin{example}
+Suppose $f : \R^m \to \R^n$ is discontinuous at some $\vec c \in \R^m$. Prove that there exists a sequence $(\vec x_k)$ with $(\vec x_k) \to \vec c$ and $(f(\vec x_k)) \nrightarrow f(\vec c)$.
+\end{example}
+
+\begin{proof}
+Since $f$ is discontinuous at $\vec c$, there exists $\varepsilon > 0$ such that, for all $\delta > 0$, there exists $\vec x \in \R^m$ with $|| \vec x - \vec c|| < \delta$ and $||f(\vec x) - f(\vec c)|| \ge \varepsilon$. \\
+
+For $k \in \N$, $\frac 1 k > 0$, so there exists $\vec x_k \in \R^m$ with $||\vec x_k - \vec c|| < \frac 1 k$, and $||f(\vec x_k) - f(\vec c)|| \ge \varepsilon$.\\
+
+Now, we want to show that $(\vec x_k) \to \vec c$ and $(f(\vec x_k)) \nrightarrow f(\vec c)$.\\
+
+First, we show that $(\vec x_k) \to \vec c)$. Let $\varepsilon' > 0$. Let $N = \frac{1}{\varepsilon'}$. Let $k > N$. Then,
+\begin{align*}
+    ||\vec x_k - \vec c|| &< \frac 1 k \quad \text{by construction of }\vec x_k \\
+    &< \frac 1 N \quad \text{since } k > N\\
+    &= \varepsilon'
+\end{align*}
+so $(\vec x_k) \to \vec c)$.\\
+
+Now, since by construction $||f(\vec x_k) - f(\vec c)|| \ge \varepsilon$ for all $k \in \N$, $(f(\vec x_k)) \nrightarrow f(\vec c)$.
+\end{proof}
+
+\begin{definition}[Sequentially Continuous]
+A function $f : \R^m \to \R^n$ is \textit{sequentially continuous} at $\vec c \in \R^m$ if, for every sequence $(\vec x_k)$ in $\R^m$ with limit $\vec c$, we have $\lim_{k \to \infty} f(\vec x_k) = f(\vec c)$.
+\end{definition}
+
+From the above example, we realize that if $f$ is sequentially continuous at $\vec c$, then $f$ is continuous at $\vec c$!

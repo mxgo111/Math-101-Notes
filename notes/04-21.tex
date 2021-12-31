@@ -1,0 +1,52 @@
+\section{Lecture 22: 04/21/21}
+
+Today's core lesson is that ``closed" $\neq$ ``not open". We'll also go over 2 ways of describing limit points.
+
+\begin{definition}
+Let $A \subseteq \R^m$, and $\vec x \in \R^m$. We say $\vec x $ is a \textit{limit point} of $A$ if there exists a sequence $(\vec x_n)$ in $A \setminus \{\vec x\}$ with $\lim_{n \to \infty} \vec x_n = \vec x$. (Notice that a limit point of $A$ need not actually be in $A$, but it certainly can be).
+\end{definition}
+
+\begin{definition}
+A set is \textit{closed} if it contains all its limit points.
+\end{definition}
+
+\begin{example}\quad
+\begin{itemize}
+    \item $\{(x,y) : x^2 + y^2 < 1\}$ (filled-in unit circle without boundary) has limit points $\{(x,y) : x^2 + y^2 \le 1\}$ (filled-in unit circle with boundary. This is not closed.
+    \item $\{(x,y) : x^2 + y^2 \le 1\} \cup \{(1, 2), (-2, -1)\}$ has limit points $\{(x,y) : x^2 + y^2 \le 1\}$
+\end{itemize}
+\end{example}
+
+\begin{theorem}
+Let $A \subseteq \R^m$ and $\vec x \in \R^m$. Prove that $\vec x$ is a limit point of $A$ iff, for every $\eps > 0$, the open ball $V_\eps(\vec x)$ includes some point of $A$ other than $\vec x$.
+\end{theorem}
+
+\begin{proof}
+($\implies$). Suppose that $\vec x$ is a limit point of $A$. Then, there exists a sequence $(\vec x_n)$ in $A\setminus \{\vec x\}$ with limit $\vec x$. Let $\eps > 0$. Since $(\vec x_n) \to \vec x$, there exists $N$ such that for all $n > N$, $||\vec x_n - \vec x|| < \eps$. Let $n > N$. Then, $\vec x_n$ is a point of $A \setminus\{\vec x\}$ such that $\vec x_n \in V_\eps (\vec x)$.
+
+($\impliedby$). Suppose that, for every $\eps > 0$, $V_\eps(\vec x)$ includes some point of $A$ other than $\vec x$. For every $k \in \N$, $V_{\frac 1 k} (\vec x)$ includes some point of $A$ other than $\vec x$. Let $\vec x_k$ be such a point. We want to show that $(\vec x_k) \to \vec x$, knowing that $||\vec x- \vec x|| < \frac 1 k$.\\
+
+Let $\eps > 0$, and let $N = \frac 1 \eps$. Let $k > N$. Then,
+\begin{align*}
+    ||\vec x_k - \vec x || &< \frac 1 k \qquad \text{by construction of $\vec x_k$} \\
+    &< \frac 1 N \qquad \text{since }k > N  \\
+    &= \eps.
+\end{align*}
+\end{proof}
+
+\begin{example}[Extreme Examples]
+\begin{itemize}
+    \item $\R^m$ is closed, since it includes all its limit points.
+    \item $\emptyset$ is closed (vacuously true).
+\end{itemize}
+
+Thus, $\R^m$ and $\emptyset$ are both open and closed.
+\end{example}
+
+\begin{example}
+The interval $(a,b)$ in $\R$ is not closed.
+\end{example}
+
+\begin{proof}
+We claim $a$ and $b$ are limit points! For example, consider $a$. Let $\eps > 0$. Let $x = a + \frac{\min(\eps, b-a)}{2}$. Then, $a < x \le a + \frac \eps 2 < a + \eps$, so $x \in V_\eps (a)$. Also, $x \le a + \frac {b-a}{2} < a + (b-a) = b$, so $x \in (a,b)$. So, we've shown $x$ is a point in $(a,b) \setminus \{a\}$ which is also in $V_\eps (x)$.
+\end{proof}

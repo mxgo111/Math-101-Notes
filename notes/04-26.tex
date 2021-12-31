@@ -1,0 +1,43 @@
+\section{Lecture 23: 04/26/21}
+
+Recall from last week:
+\begin{itemize}
+    \item A set $U$ in $\R^m$ is open if, for every $\vec x \in U$, there exists $\eps > 0$ such that $V_\eps (\vec x) \subseteq U$.
+    \item For every $n \in \N$, the set $V_{1/n}(\vec 0)$ in $\R^m$ is open, but the intersection $\bigcap_{n \in \N} V_{1/n}(\vec 0)$ isn't open.
+\end{itemize}
+
+\begin{proposition}\quad
+\begin{itemize}
+    \item The union of an arbitrary collection of open sets in $\R^m$ is open. In other words, if $U_i$ is an open subset of $\R^m$ for every $i$ in some set $\mathcal I$, then $\bigcup_{i \in \mathcal I} U_i$ is open.
+    \item The intersection of a finite collection of open sets in $\R^m$ is open.
+\end{itemize}
+\end{proposition}
+
+\begin{proof}\
+\begin{itemize}
+    \item Suppose that, for every $i$ in some set $\mathcal I$, $U_i$ is an open subset of $\R^m$. Let $\vec x \in \bigcup_{i \in \mathcal I} U_i$. By definition of union, $\vec x \in U_i$ for some $i \in \mathcal I$. Since $U_i$ is open, there exists $\eps > 0$ such that $V_\eps (\vec x) \subseteq U_i$. Then, $V_\eps (\vec x) \subseteq \bigcup_{i \in \mathcal I} U_i$ as well, so $\bigcup_{i \in \mathcal I} U_i$ is open.
+    
+    \item Let $U_1,\dots U_n$ be open sets in $\R^m$. Let $u=\bigcap^n_{i=1}U_i$. We want to show that $U$ is open. Let $\vec{x}\in U$. By definition of set intersection, $\vec{x}\in U_i$ for all $i$. Since each $U_i$ is open, there exists some $\varepsilon_i > 0$ such that $V_{\varepsilon_i}(\vec{x})\subseteq U_i$. Let $\varepsilon = min(\varepsilon_1,\dots,\varepsilon_n)$. Then $V_\varepsilon(\vec{x}) \subseteq V_{\varepsilon_i}(\vec{x})\subseteq U_i$ for all $i\in \{1,\dots,n\}$. Then $V_\varepsilon(\vec{x})\subseteq U$.  
+\end{itemize}
+\end{proof}
+
+\begin{example}
+Let $(\vec{x}_k)$ be a sequence in $\R^m$. Prove that $(\vec{x}_k)\to \vec{L}$ iff for every open set $U$ in $\R^m$ containing $\vec{L}$, there exists $N$ such that for all $k>N$, $\vec{x}_k\in U$.
+\begin{proof}\
+\begin{itemize}
+    \item[($\Leftarrow$)] Suppose for every open set $U$ in $\R^m$ containing $\vec{L}$, there exists $N$ such that for all $k>N$, $\vec{x}_k\in U$. Apply this to $U=V_\varepsilon(\vec{L})$: For every $\varepsilon>0$, $V_\varepsilon(\vec{L})$ is an open set containing $\vec{L}$, so there exists $N$ such that, for all $k>N$, $\vec{x_k}\in V_\varepsilon(\vec{L})$. So, $(\vec{x}_k)\to \vec{L}$.
+    \item[($\Rightarrow$)] Suppose $(\vec{x}_k) \to \vec{L}$. Let $U$ be an open set containing $\vec{L}$. Since $U$ is open, there exists $\varepsilon>0$ such that $V_\varepsilon(\vec{L}) \subseteq U$. Since $(\vec{x}_k)\to \vec{L}$, there exists $N$ such that for all $k>N$, $\vec{x}_k\in V_\varepsilon(\vec{L})$. Since $V_\varepsilon(\vec{L})\subseteq U$, that means $\vec{x}_k\in U$ for all $k>N$.
+\end{itemize}
+\end{proof}
+\end{example}
+
+\begin{example}
+Let $A\subseteq \R^m$. Prove that $A$ is closed iff $\R^m\setminus A$ is open.
+\begin{proof}
+Let $A \subseteq \R^m$.
+\begin{itemize}
+    \item[($\Rightarrow$)] Suppose $A$ is closed. Let $\vec{x}\in \R^m\setminus A$. Then $\vec{x}$ is not a limit point of $A$ since $A$ is closed. So, there exists a $\varepsilon>0$ such that $V_\varepsilon(\vec{x})$ contains no points of $A\setminus\{\vec{x}\}=A$. Then, $V_\varepsilon(\vec{x})\subseteq \R^m\setminus A$.
+    \item[($\Leftarrow$)] Suppose $\R^m\setminus A$ is open. Let $\vec{x}\in \R^m\setminus A$. (WTS: $\vec{x}$ is not a limit point.) Since $\R^m\setminus A$ is open, there exists $\varepsilon>0$ such that $V_\varepsilon(\vec{x}) \subseteq \R^m\setminus A$. Then $V_\varepsilon(\vec{x})$ contains no points of $A$, so $\vec{x}$ is not a limit point of $A$. So, $A$ is closed.
+\end{itemize}
+\end{proof}
+\end{example}
